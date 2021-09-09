@@ -1,0 +1,29 @@
+---
+title: "homework_3"
+author: "jena"
+date: "8/31/2021"
+output: github_document
+---
+###########
+I am adding the library command to the setup so it loads the tidyverse with the setup.
+###########
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+############
+lots of problems not sure why this wouldn't make a bar graph my ufo sightings data I will try to add my csv file for ufo sightings the command is read.csv I put this under the library commands.Then you can try adding the shape and duration plot once again.
+###########
+
+```{r plot, echo=TRUE}
+mpg_plot <- ggplot(data = mtcars, mapping = aes(x = cyl, y = mpg)) +
+  geom_point()
+print(mpg_plot)
+```
+
+
+
+
+
+

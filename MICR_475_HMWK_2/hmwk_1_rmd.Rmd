@@ -1,0 +1,10 @@
+---
+title: "homework 1"
+output: github_document
+
+---
+**bold**
+*underlined*
+```{r}
+2+2
+```
