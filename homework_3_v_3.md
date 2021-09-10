@@ -16,6 +16,6 @@ ggplot(data=mpg, mapping = aes(x=model, y=cty))+
 
 ### Conclusion
 
-larger vehicles like the SUV’s and Trucks had terrible gas mileage. Cars
-like the new beetle hava a larger range of gas mileage compared to the
+Larger vehicles like the SUV’s and Trucks had terrible gas mileage. Cars
+like the new beetle have a a larger range of gas mileage compared to the
 Ford F150 and Range Rover had a much narrower range.
