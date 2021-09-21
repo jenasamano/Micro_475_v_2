@@ -29,14 +29,18 @@ making about you research.
 ![alt
 text](/Users/taraw/OneDrive/Desktop/Micro_475_v_2/successful_plot.png)
 
-A successful plot: The data sets mapped into the image are the
-Bridgemanite and Ringwoodite experiment results. The dislocation
-mobility, T, and water saturation are all continuous. They are not
-factors, they could be any of the values, and are not confined to a
-specific range. The scale looks like a mean or average of the range of
-values. They apply a line of best fit according to that mean in order to
-show how most of the values fall along it and support their assessment
-that there is a negatively correlational relationship between the two.
+A successful plot:
+
+The data sets mapped into the image are the Bridgemanite and Ringwoodite
+experiment results. The dislocation mobility, T, and water saturation
+are all continuous. They are not factors, they could be any of the
+values, and are not confined to a specific range.
+
+The scale looks like a mean or average of the range of values. They
+apply a line of best fit according to that mean in order to show how
+most of the values fall along it and support their assessment that there
+is a negatively correlational relationship between the two.
+
 This a geom\_point() plot of dislocation mobility \[y axis\] of
 Bridgemanite, and Ringwoodite as it becomes more hydrous and at
 different temperatures \[temp and hydration in x axis\] (A,B) and then a
