@@ -30,7 +30,7 @@ This a geom_point() plot of dislocation mobility [y axis] of Bridgemanite, and R
 
 ## The Unsuccessful Plot
 
-![alt text](/Users/taraw/OneDrive/Desktop/Micro_475_v_2/unsuccessful_plot.png)
+![alt text](unsuccessful_plot.png)
 
 **Overlapping data**: On the left side of the graph there is a significant comparison of all of the lines to the standard (?) values of bending vibration of water molecules in NAS glass. However NAS is not a standard they are values from the current experiment. Since this is the comparison that is vital perhaps a subset inlay of this section of the graph blown up? Would a graph of the results on their own and another one with the comparison have been more effective?
 

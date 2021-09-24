@@ -49,8 +49,7 @@ a function of water saturation.
 
 ## The Unsuccessful Plot
 
-![alt
-text](/Users/taraw/OneDrive/Desktop/Micro_475_v_2/unsuccessful_plot.png)
+![alt text](unsuccessful_plot.png)
 
 **Overlapping data**: On the left side of the graph there is a
 significant comparison of all of the lines to the standard (?) values of
