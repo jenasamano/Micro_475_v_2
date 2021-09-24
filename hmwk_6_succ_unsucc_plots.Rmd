@@ -16,7 +16,7 @@ Presenting scientific data today there is a press to be correct and taken seriou
 
 ## The Successful Plot
 
-![alt text](/Users/taraw/OneDrive/Desktop/Micro_475_v_2/successful_plot.png)
+![alt text](successful_plot.png)
 
 
 A successful plot: 

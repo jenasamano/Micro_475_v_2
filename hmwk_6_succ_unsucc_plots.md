@@ -26,8 +26,7 @@ making about you research.
 
 ## The Successful Plot
 
-![alt
-text](/Users/taraw/OneDrive/Desktop/Micro_475_v_2/successful_plot.png)
+![alt text](successful_plot.png)
 
 A successful plot:
 
