@@ -102,7 +102,7 @@ diamond_filter_1 <- diamonds %>%
   filter(x>=3) %>% 
   filter(y>1 & y<20) %>% 
   filter(z>1 & z<10)
-diamond_filter_1
+diamond_filter_1 
 ```
 
     ## # A tibble: 53,917 x 10

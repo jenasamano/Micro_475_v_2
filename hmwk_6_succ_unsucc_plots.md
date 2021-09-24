@@ -5,9 +5,9 @@ hmwk\_6\_succ\_unsucc\_plots
 
 Presenting scientific data today there is a press to be correct and
 taken seriously. Data is presented without drama or flair and eschew any
-hint of entertainment. In the converted effort to be solemnly relevant
-we spend time in consideration of ink/data ratios which are based on
-monetary consideration as opposed to ease of communication of
+hint of entertainment. In the concerted effort to be solemnly relevant
+we spend time in consideration of ink/data ratios which are lost in
+monetary considerations as opposed to ease of communication of
 information. Efficiency is correlational to how much information can go
 on a plot to save on that precious ink and space. The audience seems
 seldom considered as authors take Tufte’s conclusion, “Moreover, it is a
