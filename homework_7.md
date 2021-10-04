@@ -5,6 +5,8 @@ Homework\_7\_Bad\_plot
 library(palmerpenguins)
 ```
 
+# How it Should Look
+
 ``` r
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island)) +
   geom_point() +
@@ -14,6 +16,8 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species
     ## Warning: Removed 2 rows containing missing values (geom_point).
 
 ![](homework_7_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+# How it Should Not Look
 
 ``` r
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island, size=year)) +

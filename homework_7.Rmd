@@ -14,6 +14,8 @@ library(tidyverse)
 library(palmerpenguins)
 ```
 
+# How it Should Look
+
 
 ```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island)) +
@@ -21,6 +23,8 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species
   labs(x = "Bill length (mm)", y = "Flipper length (mm)")
 ```
 
+
+# How it Should Not Look
 
 ```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island, size=year)) +
