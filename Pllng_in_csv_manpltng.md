@@ -1,19 +1,22 @@
----
-title: "Pllng_in_csv_manpltng"
-output: github_document
----
+Pllng\_in\_csv\_manpltng
+================
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-```
-
-
-```{r}
+``` r
 petro_lab_4 <- read_csv("petro_lab_4.csv")
 ```
 
-```{r}
+    ## Rows: 10 Columns: 11
+
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: ","
+    ## chr  (1): name
+    ## dbl (10): MnO, FeO, K2O, CaO, TiO2, Na2O, MgO, Al2O3, SiO2, Total
+
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 CaO_FeO_lines <- data.frame(
   xstart=c(7.43,   23.95,  .24), 
   ystart=c(21.23,  0,     11.76),
@@ -22,15 +25,13 @@ CaO_FeO_lines <- data.frame(
 )
 ```
 
-
-```{r}
+``` r
 CaO_FeO_data <- petro_lab_4 %>%
   filter(name %in% c("Syenite", "Gabbro", "Cpx", "Pl^2", "Ol")) %>% 
   mutate(CaO_FeO_color=as.factor(c(1,2,3,3,3)))
 ```
 
-
-```{r}
+``` r
 CaO_FeO_Plot <-
   ggplot()+
   geom_point(data=CaO_FeO_data, aes(x = FeO, y = CaO, color=CaO_FeO_color))+
@@ -39,8 +40,9 @@ CaO_FeO_Plot <-
 CaO_FeO_Plot
 ```
 
+![](Pllng_in_csv_manpltng_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-```{r}
+``` r
 CaO_SiO2_lines <- data.frame(
   xstart=c(37.54,50.95,53.19), 
   ystart=c(0,    21.23,11.76),
@@ -49,15 +51,13 @@ CaO_SiO2_lines <- data.frame(
 )
 ```
 
-
-```{r}
+``` r
 CaO_SiO2_data <- petro_lab_4 %>%
   filter(name %in% c("Syenite", "Gabbro", "Cpx", "Pl^2", "Ol")) %>% 
   mutate(CaO_SiO2_color=as.factor(c(1,2,3,3,3)))
 ```
 
-
-```{r}
+``` r
 CaO_SiO2_Plot <-
   ggplot()+
   geom_point(data=CaO_SiO2_data, aes(x = SiO2, y = CaO, color=CaO_SiO2_color))+
@@ -66,7 +66,9 @@ CaO_SiO2_Plot <-
 CaO_SiO2_Plot
 ```
 
-```{r}
+![](Pllng_in_csv_manpltng_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+``` r
 Al2O3_MgO_lines <- data.frame(
   xstart=c(0,15.39,38.07), 
   ystart=c(29.45, 3.19,0),
@@ -75,15 +77,13 @@ Al2O3_MgO_lines <- data.frame(
 )
 ```
 
-
-```{r}
+``` r
 Al2O3_MgO_data <- petro_lab_4 %>%
   filter(name %in% c("Syenite", "Gabbro", "Cpx", "Pl^2", "Ol")) %>% 
   mutate(Al2O3_MgO_color=as.factor(c(1,2,3,3,3)))
 ```
 
-
-```{r}
+``` r
 Al2O3_MgO_Plot <-
   ggplot()+
   geom_point(data=Al2O3_MgO_data, aes(x = MgO, y = Al2O3, color=Al2O3_MgO_color))+
@@ -97,3 +97,5 @@ Al2O3_MgO_Plot <-
   annotate("text",x=3, y=14, label= "Syenite")
 Al2O3_MgO_Plot
 ```
+
+![](Pllng_in_csv_manpltng_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
