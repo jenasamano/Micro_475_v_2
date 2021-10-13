@@ -36,7 +36,13 @@ CaO_FeO_Plot <-
   ggplot()+
   geom_point(data=CaO_FeO_data, aes(x = FeO, y = CaO, color=CaO_FeO_color))+
   geom_segment(data=CaO_FeO_lines, aes(x=xstart, y=ystart, xend=xend, yend=yend))+
-  theme_classic()
+  theme_classic()+
+    labs(x="Iron Oxide", y="Calcium Oxide")+
+  annotate("text", x=0, y=14, label="Pl")+
+  annotate("text",x=8, y=25, label= "Cpx")+
+  annotate("text",x=24, y=3, label= "Ol")+
+  annotate("text",x=10, y=13, label= "Gabbro")+
+  annotate("text",x=4, y=5, label= "Syenite")
 CaO_FeO_Plot
 ```
 
@@ -62,7 +68,13 @@ CaO_SiO2_Plot <-
   ggplot()+
   geom_point(data=CaO_SiO2_data, aes(x = SiO2, y = CaO, color=CaO_SiO2_color))+
   geom_segment(data=CaO_SiO2_lines, aes(x=xstart, y=ystart, xend=xend, yend=yend))+
-  theme_classic()
+  theme_classic()+
+  labs(x="Silica Oxide", y="Calcium Oxide")+
+  annotate("text", x=55, y=12, label="Pl")+
+  annotate("text",x=50, y=25, label= "Cpx")+
+  annotate("text",x=37, y=3, label= "Ol")+
+  annotate("text",x=47, y=13, label= "Gabbro")+
+  annotate("text",x=59, y=5, label= "Syenite")
 CaO_SiO2_Plot
 ```
 
