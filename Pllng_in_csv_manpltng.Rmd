@@ -1,0 +1,40 @@
+---
+title: "Pllng_in_csv_manpltng"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+```{r}
+petro_lab_4 <- read_csv("petro_lab_4.csv")
+```
+
+```{r}
+CaO_FeO_lines <- data.frame(
+  xstart=c(7.43,   23.95,  .24), 
+  ystart=c(21.23,  0,     11.76),
+  xend=c(  23.95,  .24,    7.43),
+  yend=c(  0,      11.76, 21.23)
+)
+```
+
+
+```{r}
+CaO_FeO_data <- petro_lab_4 %>%
+  filter(name %in% c("Syenite", "Gabbro", "Cpx", "Pl^2", "Ol")) %>% 
+  mutate(CaO_FeO_color=as.factor(c(1,2,3,3,3)))
+```
+
+
+```{r}
+CaO_FeO_Plot <-
+  ggplot()+
+  geom_point(data=CaO_FeO_data, aes(x = FeO, y = CaO, color=CaO_FeO_color))+
+  geom_segment(data=CaO_FeO_lines, aes(x=xstart, y=ystart, xend=xend, yend=yend))
+CaO_FeO_Plot
+```
+

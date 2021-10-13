@@ -1,0 +1,136 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Run this code chunk to install the Palmer penguins package. You will only need to run this code chunk once, the very first time you install the package. You can delete it after installing.
+
+```{r}
+install.packages("palmerpenguins")
+```
+
+Load the Palmer penguins package in the code chunk below:
+
+```{r}
+library(palmerpenguins)
+```
+
+There are two datasets in this package: `penguins` and `penguinsraw`. We'll use `penguins`. Look at the first 5 rows of penguins. What variables are available?
+```{r}
+head(penguins)
+```
+
+Create two datasets from the `penguins` data.frame: one containing observations for only male penguins, and one for only female penguins. Save them as `penguins_male` and `penguins_female`.
+
+```{r}
+penguins_male <- penguins %>% 
+  filter(sex == 'male')
+
+penguins_female <- penguins %>% 
+  filter(sex == 'female')
+```
+
+Make two scatter plots of bill length against flipper length, one for males and one for females.
+
+```{r}
+ggplot(penguins_male, aes(x = bill_length_mm, y= flipper_length_mm)) +
+  geom_point()
+
+ggplot(penguins_female, aes(x = bill_length_mm, y= flipper_length_mm)) +
+  geom_point()
+```
+
+Do you notice any patterns on either of these graphs? If not, try changing the color of the points. Map the color aesthetic to another variable in the dataset and see if the patterns become more obvious. Try it first for the female plot.
+
+```{r}
+ggplot(penguins_female, aes(x = bill_length_mm, y = flipper_length_mm, colour = species)) +
+  geom_point()
+```
+
+Try changing the shape aesthetic too. Either assign it to the same variable as color or assign it to a different variable. While you're at it, change the axis labels so they're human readable.
+
+```{r}
+ggplot(penguins_female, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island)) +
+  geom_point() +
+  labs(x = "Bill length (mm)", y = "Flipper length (mm)")
+```
+
+Now, ask me for the shortcut to quickly make two graphs, one for each sex, without creating two new data.frames.
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, colour = species, shape = island)) +
+  geom_point() +
+  labs(x = "Bill length (mm)", y = "Flipper length (mm)") +
+  facet_wrap(~sex)
+```
+
+Scatter plots are nice for visualizing two continuous variables. But we have some categorical variables (namely species, island, and sex) that we may want to include some visualizations for. A boxplot is a good way to visualize a plot of continuous vs categorical variable. Make a plot that displays boxplots of body mass for each penguin species, then take that plot and facet it by sex. Before faceting the boxplot by sex, remove the rows in `penguins` where sex is NA.
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+
+# I want to remove those values that had NA for sex we saw previously. This can be done
+# by filtering and keeping only rows that are NOT NA for sex and then piping that to ggplot.
+penguins %>% 
+  filter(!is.na(sex)) %>% 
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot() +
+  facet_wrap(~sex)
+```
+
+Let's look at which penguin species are found on which islands. You can do this using the `table()` function.
+
+```{r}
+table(penguins$species, penguins$island)
+```
+
+It looks like Adelie penguins are the only penguin species found on all three islands. Make four plots that use only the Adelie penguins for their data. These plots should show the distribution of each of the numeric variables (bill length, bill depth, flipper length, and body mass) faceted by island. (Hint: use `geom_histogram()`). 
+
+```{r}
+adelie_penguins <- penguins %>% 
+  filter(species == "Adelie")
+
+ggplot(adelie_penguins, aes(bill_length_mm)) +
+  geom_histogram() +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(bill_depth_mm)) +
+  geom_histogram() +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(flipper_length_mm)) +
+  geom_histogram() +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(body_mass_g)) +
+  geom_histogram() +
+  facet_wrap(~island)
+
+```
+
+Histograms are a nice way to visualize the distribution of a variable, but are heavily dependent on the chosen number of bins or the binwidth. Pick one of the previous 4 plots and play around with the bins and binwidth arguments to see how they affect how the graphs look. You can do this within `geom_histogram(bins = 50)` or `geom_histogram(binwidth = 500)`.
+
+```{r}
+ggplot(adelie_penguins, aes(body_mass_g)) +
+  geom_histogram(bins = 100) +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(body_mass_g)) +
+  geom_histogram(bins = 10) +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(body_mass_g)) +
+  geom_histogram(binwidth = 100) +
+  facet_wrap(~island)
+
+ggplot(adelie_penguins, aes(body_mass_g)) +
+  geom_histogram(binwidth = 1000) +
+  facet_wrap(~island)
+
+```
+
