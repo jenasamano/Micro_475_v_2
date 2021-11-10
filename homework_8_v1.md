@@ -54,6 +54,8 @@ diamonds_start
 A table to which I have added (mutated) the column slope in descending
 order.
 
+arrange(desc(sqrt\_aic))+ arrange(desc(monod\_aic))
+
 # Non linear
 
 ``` r
@@ -80,7 +82,7 @@ compare_models <- DNase %>%
     monod_mod, data = ., start = list(dmax = .3, k = .4)
   )), 
   sqrt_aic= map_dbl(sqrt_mod,~glance(.)$AIC), 
-  monod_aic=map_dbl(monod_mod,~glance(.)$AIC))
+  monod_aic=map_dbl(monod_mod,~glance(.)$AIC)) 
 compare_models
 ```
 
@@ -103,7 +105,9 @@ compare_models
 # Build the Plots for comparison
 
 ``` r
-plot_monod_model <- ggplot(compare_models,aes(x=Run, y=monod_aic))+
+plot_monod_model <- compare_models %>% 
+    ggplot(aes(x=Run, y=monod_aic))+
+  scale_y_continuous(limit=c(-90,-25))+
   geom_point()+
   theme_classic()+
   labs(title="Monod AIC Per Run", y= "Monod AIC", x="Run Number")+
@@ -116,10 +120,11 @@ plot_monod_model
 ``` r
   plot_squareroot_model <- ggplot(compare_models,aes(x=Run, y=sqrt_aic))+
   geom_point()+
+    scale_y_continuous(limit=c(-90,-25))+
   theme_classic()+
   labs(title="Squareroot AIC Per Run", y= "Squareroot AIC", x="Run Number")+
   theme(plot.title = element_text(size = 10, hjust = .5))
-plot_squareroot_model
+    plot_squareroot_model
 ```
 
 ![](homework_8_v1_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
