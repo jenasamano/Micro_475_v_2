@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Ternary diagram
+
+![alt text](tern_pyroxene.png)
+
+
+```{r}
+library(Ternary)
+
+TernaryPlot()
+
+
+```
+
