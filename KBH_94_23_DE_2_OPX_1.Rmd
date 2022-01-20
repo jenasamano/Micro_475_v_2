@@ -1,5 +1,5 @@
 ---
-title: "KBH_94_23_DE_1_pyx_1"
+title: "KBH_94_23_DE_2_OPX_1"
 output: github_document
 ---
 
@@ -8,17 +8,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
+# Read in file and swap in new file name in code
 
 ```{r}
 library(readr)
-KBH_94_23_DE_1_pyx_1 <- read_csv("KBH_94_23_DE_1_pyx_1.csv")
-View(KBH_94_23_DE_1_pyx_1)
+KBH_94_23_DE_2_OPX_1 <- read_csv("KBH_94_23_DE_2_OPX_1.csv")
+View(KBH_94_23_DE_2_OPX_1)
 ```
 
 #Step 1
 
 ```{r}
-mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
+mol_numbers <- mutate(KBH_94_23_DE_2_OPX_1, phos_ox/141.943,
                   sil_ox/53.083,
                   tit_ox/79.865,
                   alu_ox/101.961,
@@ -50,6 +51,7 @@ oxygen_number <- mutate(mol_numbers, p = phos_ox/141.943*5,
                         )
 ```
 
+
 # isolate
 
 ```{r}
@@ -67,6 +69,7 @@ sum_ox <- select(oxygen_number, p,
                    k
                    )
 ```
+
 
 ```{r}
 sum_row <- sum_ox %>% 
@@ -103,6 +106,7 @@ oxy_num_mult_norm_const <- mutate(six_div_sum_oxygen_number, a = p*norm_constant
                                   l = k*norm_constant
                                   )
 ```
+
 
 #Step 4
 

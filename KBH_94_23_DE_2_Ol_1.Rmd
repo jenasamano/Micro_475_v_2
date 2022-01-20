@@ -1,5 +1,5 @@
 ---
-title: "KBH_94_23_DE_1_pyx_1"
+title: "KBH_94_23_DE_2_Ol_1"
 output: github_document
 ---
 
@@ -8,17 +8,16 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-
 ```{r}
 library(readr)
-KBH_94_23_DE_1_pyx_1 <- read_csv("KBH_94_23_DE_1_pyx_1.csv")
-View(KBH_94_23_DE_1_pyx_1)
+KBH_94_23_DE_2_Ol_1 <- read_csv("KBH_94_23_DE_2_Ol_1.csv")
+View(KBH_94_23_DE_2_Ol_1)
 ```
 
 #Step 1
 
 ```{r}
-mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
+mol_numbers <- mutate(KBH_94_23_DE_2_Ol_1, phos_ox/141.943,
                   sil_ox/53.083,
                   tit_ox/79.865,
                   alu_ox/101.961,
@@ -31,6 +30,7 @@ mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
                   sod_ox/61.979,
                   pot_ox/94.195)
 ```
+
 
 #Step 2
 
@@ -50,6 +50,7 @@ oxygen_number <- mutate(mol_numbers, p = phos_ox/141.943*5,
                         )
 ```
 
+
 # isolate
 
 ```{r}
@@ -68,23 +69,27 @@ sum_ox <- select(oxygen_number, p,
                    )
 ```
 
+
 ```{r}
 sum_row <- sum_ox %>% 
   mutate(sum = rowSums(.))
 ```
 
-## These are Pyroxenes so 6/the sum'd number from the sum_row data
+
+## These are Olivines so 4/the sum'd number from the sum_row data
 
 ```{r}
-six_div_sum <- mutate(sum_row,norm_constant = 6/sum) %>% 
+six_div_sum <- mutate(sum_row,norm_constant = 4/sum) %>% 
   select(norm_constant)
 ```
+
 
 # Step 3
 
 ```{r}
 six_div_sum_oxygen_number <- bind_cols(oxygen_number,six_div_sum)
 ```
+
 
 # Math
 

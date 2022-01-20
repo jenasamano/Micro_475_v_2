@@ -1,24 +1,32 @@
----
-title: "KBH_94_23_DE_1_pyx_1"
-output: github_document
----
+KBH\_94\_23\_DE\_2\_SPI\_1
+================
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-```
+# Read in file and swap in new file name in code
 
-
-```{r}
+``` r
 library(readr)
-KBH_94_23_DE_1_pyx_1 <- read_csv("KBH_94_23_DE_1_pyx_1.csv")
-View(KBH_94_23_DE_1_pyx_1)
+KBH_94_23_DE_2_SPI_1 <- read_csv("KBH_94_23_DE_2_SPI_1.csv")
 ```
 
-#Step 1
+    ## Rows: 26 Columns: 13
 
-```{r}
-mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: ","
+    ## chr  (1): point
+    ## dbl (12): phos_ox, sil_ox, tit_ox, alu_ox, cro_ox, mag_ox, cal_ox, man_ox, f...
+
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+View(KBH_94_23_DE_2_SPI_1)
+```
+
+\#Step 1
+
+``` r
+mol_numbers <- mutate(KBH_94_23_DE_2_SPI_1, phos_ox/141.943,
                   sil_ox/53.083,
                   tit_ox/79.865,
                   alu_ox/101.961,
@@ -32,9 +40,9 @@ mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
                   pot_ox/94.195)
 ```
 
-#Step 2
+\#Step 2
 
-```{r}
+``` r
 oxygen_number <- mutate(mol_numbers, p = phos_ox/141.943*5,
                         si = sil_ox/53.083 * 2,
                         ti = tit_ox/79.865 * 2,
@@ -52,7 +60,7 @@ oxygen_number <- mutate(mol_numbers, p = phos_ox/141.943*5,
 
 # isolate
 
-```{r}
+``` r
 sum_ox <- select(oxygen_number, p,
                    si,
                    ti,
@@ -68,27 +76,27 @@ sum_ox <- select(oxygen_number, p,
                    )
 ```
 
-```{r}
+``` r
 sum_row <- sum_ox %>% 
   mutate(sum = rowSums(.))
 ```
 
-## These are Pyroxenes so 6/the sum'd number from the sum_row data
+## These are Spinelses so 4/the sum’d number from the sum\_row data
 
-```{r}
+``` r
 six_div_sum <- mutate(sum_row,norm_constant = 6/sum) %>% 
   select(norm_constant)
 ```
 
 # Step 3
 
-```{r}
+``` r
 six_div_sum_oxygen_number <- bind_cols(oxygen_number,six_div_sum)
 ```
 
 # Math
 
-```{r}
+``` r
 oxy_num_mult_norm_const <- mutate(six_div_sum_oxygen_number, a = p*norm_constant,
                                   b = si*norm_constant,
                                   c = ti*norm_constant,
@@ -104,9 +112,9 @@ oxy_num_mult_norm_const <- mutate(six_div_sum_oxygen_number, a = p*norm_constant
                                   )
 ```
 
-#Step 4
+\#Step 4
 
-```{r}
+``` r
 mult_cations <- mutate(oxy_num_mult_norm_const, a1 = a * 2/5,
                        a2 = b * 1/2,
                        a3 = c * 1/2,
@@ -121,9 +129,9 @@ mult_cations <- mutate(oxy_num_mult_norm_const, a1 = a * 2/5,
                        a12 = l * 2/1)
 ```
 
-#Sum up
+\#Sum up
 
-```{r}
+``` r
 end <- mult_cations %>% 
   summarise(ave_P = mean(a1),
             ave_Si = mean(a2),
@@ -139,4 +147,3 @@ end <- mult_cations %>%
             ave_K = mean(a12) 
             )
 ```
-

@@ -1,5 +1,5 @@
 ---
-title: "KBH_94_23_DE_1_pyx_1"
+title: "KBH_94_23_DE_2_SPI_1"
 output: github_document
 ---
 
@@ -9,16 +9,19 @@ library(tidyverse)
 ```
 
 
+# Read in file and swap in new file name in code
+
 ```{r}
 library(readr)
-KBH_94_23_DE_1_pyx_1 <- read_csv("KBH_94_23_DE_1_pyx_1.csv")
-View(KBH_94_23_DE_1_pyx_1)
+KBH_94_23_DE_2_SPI_1 <- read_csv("KBH_94_23_DE_2_SPI_1.csv")
+View(KBH_94_23_DE_2_SPI_1)
 ```
+
 
 #Step 1
 
 ```{r}
-mol_numbers <- mutate(KBH_94_23_DE_1_pyx_1, phos_ox/141.943,
+mol_numbers <- mutate(KBH_94_23_DE_2_SPI_1, phos_ox/141.943,
                   sil_ox/53.083,
                   tit_ox/79.865,
                   alu_ox/101.961,
@@ -73,7 +76,7 @@ sum_row <- sum_ox %>%
   mutate(sum = rowSums(.))
 ```
 
-## These are Pyroxenes so 6/the sum'd number from the sum_row data
+## These are Spinelses so 4/the sum'd number from the sum_row data
 
 ```{r}
 six_div_sum <- mutate(sum_row,norm_constant = 6/sum) %>% 
