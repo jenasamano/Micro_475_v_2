@@ -1,0 +1,61 @@
+---
+title: "12/29
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+#Using the diamonds data set:
+
+Print a data frame that contains the simple count of diamonds in each “cut” (“Fair”, “Good”, etc.).
+
+```{r}
+simp_data <- diamonds %>% 
+  count(cut)
+simp_data
+```
+
+The diamonds data set is reasonably big, which is a bit of a pain. Use dplyr functions to create a that contains 1% of the rows of diamonds, randomly subsetted.
+# one_percent <- diamonds %>% 
+
+  sample(c("Fair","Ideal","Premium","Good","Very Good"),
+         size = n,
+         replace = FALSE,
+         prob = c(.99,.1))
+one_percent
+
+```{r}
+one_percent <- diamonds %>% 
+  slice_sample(prop = 0.01)
+  
+  
+
+```
+
+Calculate the average size of the 100 largest diamonds in each clarity category.
+
+```{r}
+ave_size_ten_largest <- select(diamonds, clarity, desc(carat), n = 10)
+ave_size_ten_largest
+
+```
+
+
+```{r}
+real_ave <- select(diamonds,clarity,carat) %>% 
+  filter(desc(carat))
+  real_ave
+                   
+                   
+```
+
+```{r}
+plot <- ggplot(diamonds, aes(x = clarity, y = carat))+
+  geom_point()+
+  theme_classic()
+plot
+```
+
